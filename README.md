@@ -35,7 +35,9 @@ pip install "psycopg[binary,pool]"  # to install package and dependencies
 
 ### How to run
 
-<!-- UPDATE README: INCLUDE INSTRUCTIONS TO UPDATE DATABASE CONNECTION INFO -->
+1. Update the connection setting variable values at the top of `manageStudentRecords.py` to match your PostgreSQL database connection information.
+
+2. Run the following command in the terminal:
 
 ```bash
 python3 ./manageStudentRecords.py
