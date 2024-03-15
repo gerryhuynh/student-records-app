@@ -35,6 +35,8 @@ pip install "psycopg[binary,pool]"  # to install package and dependencies
 
 ### How to run
 
+<!-- UPDATE README: INCLUDE INSTRUCTIONS TO UPDATE DATABASE CONNECTION INFO -->
+
 ```bash
 python3 ./manageStudentRecords.py
 ```
