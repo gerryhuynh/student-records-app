@@ -59,6 +59,20 @@ def addStudent(first_name, last_name, email, enrollment_date):
     conn.close()
 
 
+# Updates the email address for a student with the specified student_id
+# Returns nothing
+def updateStudentEmail(student_id, new_email):
+    conn = connect()
+    with conn.cursor() as cursor:
+        # update the email address for the specified student_id
+        cursor.execute(
+            f"UPDATE students SET email = '{new_email}' WHERE student_id = {student_id}"
+        )
+        conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     getAllStudents()
-    addStudent("John", "Smith", "john.smith@example.com", "2023-09-03")
+    # addStudent("John", "Smith", "john.smith@example.com", "2023-09-03")
+    updateStudentEmail(2, "new.email@example.com")
