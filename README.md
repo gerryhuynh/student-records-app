@@ -29,7 +29,8 @@ SELECT * FROM students;
 Install [psycopg 3](https://pypi.org/project/psycopg/)
 
 ```bash
-pip3 install psycopg
+pip install --upgrade pip           # to upgrade pip
+pip install "psycopg[binary,pool]"  # to install package and dependencies
 ```
 
 ### How to run
