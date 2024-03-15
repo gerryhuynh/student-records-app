@@ -72,7 +72,20 @@ def updateStudentEmail(student_id, new_email):
     conn.close()
 
 
+# Deletes the record of the student with the specified student_id
+# Returns nothing
+def deleteStudent(student_id):
+    conn = connect()
+    with conn.cursor() as cursor:
+        # delete the record for the specified student_id
+        cursor.execute(f"DELETE FROM students WHERE student_id = {student_id}")
+        conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     getAllStudents()
     # addStudent("John", "Smith", "john.smith@example.com", "2023-09-03")
-    updateStudentEmail(2, "new.email@example.com")
+    # updateStudentEmail(2, "new.email@example.com")
+    deleteStudent(3)
+    getAllStudents()
