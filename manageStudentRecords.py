@@ -7,7 +7,6 @@ HOST = "localhost"
 PASSWORD = "student1"
 
 """
-getAllStudents(): Retrieves and displays all records from the students table.
 addStudent(first_name, last_name, email, enrollment_date): Inserts a new student record into the students table.
 updateStudentEmail(student_id, new_email): Updates the email address for a student with the specified student_id.
 deleteStudent(student_id): Deletes the record of the student with the specified student_id.
@@ -45,5 +44,21 @@ def getAllStudents():
     conn.close()
 
 
+# Inserts a new student record into the students table
+# Returns nothing
+def addStudent(first_name, last_name, email, enrollment_date):
+    conn = connect()
+    with conn.cursor() as cursor:
+        # insert a new record into the students table
+        cursor.execute(
+            f"INSERT INTO students (first_name, last_name, email, enrollment_date) VALUES ( \
+                {first_name}, {last_name}, {email}, {enrollment_date} \
+            )",
+        )
+        conn.commit()
+    conn.close()
+
+
 if __name__ == "__main__":
     getAllStudents()
+    addStudent("John", "Smith", "john.smith@example.com", "2023-09-03")
