@@ -6,7 +6,9 @@
 
 Created for COMP3005 Assignment 3 Question 1 - Winter 2024
 
-This is a simple Python application that manages student records from a PostgreSQL database.
+This is a simple Python3 application that manages student records from a PostgreSQL database.
+
+[Video Demo Link](https://youtu.be/jMeabRbVaAY)
 
 ### PostgreSQL Database setup
 
