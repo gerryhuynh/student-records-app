@@ -1,6 +1,7 @@
 import psycopg
 
 # PostgresSQL DB connection settings
+### !!! Update these settings to match your local PostgresSQL settings !!! ###
 DB_NAME = "students"
 USER = "postgres"
 HOST = "localhost"
@@ -111,26 +112,56 @@ def deleteStudent(student_id):
             conn.close()
 
 
+# Displays main menu and gets user choice
+# Returns the user's menu choice
+def menu():
+    print("\n1. Get all students")
+    print("2. Add a new student")
+    print("3. Update a student's email")
+    print("4. Delete a student")
+    print("0. Exit")
+    choice = input("Enter your choice: ")
+    print("\n")
+    return choice
+
+
+# Prompts the user for inputs and calls the appropriate function
+# Returns nothing
+def user_prompt():
+    while True:
+        choice = menu()
+
+        if choice == "1":
+            getAllStudents()
+        elif choice == "2":
+            # get the student's information
+            first_name = input("Enter the student's first name: ")
+            last_name = input("Enter the student's last name: ")
+            email = input("Enter the student's email: ")
+            enrollment_date = input(
+                "Enter the student's enrollment date (YYYY-MM-DD): "
+            )
+
+            addStudent(first_name, last_name, email, enrollment_date)
+        elif choice == "3":
+            # get the student's id and new email
+            student_id = input("Enter the student's id: ")
+            new_email = input("Enter the student's new email: ")
+
+            updateStudentEmail(student_id, new_email)
+        elif choice == "4":
+            # get the student's id
+            student_id = input("Enter the student's id: ")
+
+            deleteStudent(student_id)
+        elif choice == "0" or choice.lower() == "exit":
+            # exit the program
+            break
+        else:
+            print("Invalid choice")
+
+
 # Main function
-# Calls the getAllStudents, addStudent, updateStudentEmail, and deleteStudent functions
+# Calls the user_prompt function
 if __name__ == "__main__":
-    print("ALL STUDENTS:")
-    getAllStudents()
-
-    print("\nADDING A NEW STUDENT...")
-    addStudent("John", "Smith", "john.smith@example.com", "2023-09-03")
-
-    print("\nUPDATED ALL STUDENTS:")
-    getAllStudents()
-
-    print("\nUPDATING STUDENT 4'S EMAIL...")
-    updateStudentEmail(4, "new.email@example.com")
-
-    print("\nUPDATED ALL STUDENTS:")
-    getAllStudents()
-
-    print("\nDELETING STUDENT 4...")
-    deleteStudent(4)
-
-    print("\nUPDATED ALL STUDENTS:")
-    getAllStudents()
+    user_prompt()
