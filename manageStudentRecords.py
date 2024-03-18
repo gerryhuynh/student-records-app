@@ -114,7 +114,7 @@ def deleteStudent(student_id):
 
 # Displays main menu and gets user choice
 # Returns the user's menu choice
-def menu():
+def main_menu():
     print("\n1. Get all students")
     print("2. Add a new student")
     print("3. Update a student's email")
@@ -129,7 +129,7 @@ def menu():
 # Returns nothing
 def user_prompt():
     while True:
-        choice = menu()
+        choice = main_menu()
 
         if choice == "1":
             getAllStudents()
